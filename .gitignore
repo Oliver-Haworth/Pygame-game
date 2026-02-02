@@ -1,0 +1,11 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+game_log.log
+*.pyc
+*.pyo
+*.pyd
+
+# Distribution / build
+bin/
+build/
+dist/
