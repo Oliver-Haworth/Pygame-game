@@ -1,11 +1,15 @@
 # --- main.py ---
 ''' this file maintains the modules and runtime '''
 
+
 # --- import library ---
 ''' import all required libraries '''
+
 import pygame
 from settings import Settings
+from player import Player
 from log_system import log  
+
 
 # Clear Logs
 with open('game_log.log', 'w'):
@@ -13,12 +17,13 @@ with open('game_log.log', 'w'):
 
 log.debug('All modules imported')
 
+
 # --- Game class ---
 class Game:
     ''' Game class to manage game states and functionalities'''
 
     def __init__(self):
-        # Pygame Initialization
+        # Initializations
         pygame.init()
 
         # Clock
@@ -60,7 +65,8 @@ class Game:
 
 
     def run(self):
-        ''' main game loop '''
+        ''' main game loop 
+        NO LOGS ALLOWED IN THIS method, they will loop per frame'''
 
         while self.running:
             dt = self.clock.tick(Settings.FPS) / 1000.0
@@ -69,13 +75,20 @@ class Game:
                 if event.type == pygame.QUIT:
                     self.running = False
 
-            # Render Logic
+            # 1. Clear the canvas with new background
             self.canvas.blit(self.bg_surf, (0, 0))
 
-            # Final Upscale
+            # 2. Draw the player onto the canvas
+            pygame.draw.rect(self.canvas, Player.box_color, Player.box_rect)
+
+            # 3. Scale the canvas to screen size
             scaled_window = pygame.transform.scale(self.canvas, self.screen.get_size())
+            
+            # 4. Draw to the screen
             self.screen.blit(scaled_window, (0, 0))
+            
             pygame.display.flip()
+
 
 if __name__ == "__main__":
     Game().run()

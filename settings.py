@@ -19,14 +19,14 @@ class Settings():
     class Paths():
         ''' defines the asset paths used in the game '''
 
-        # root asset directory
+        # root directory
         ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
 
         log.debug(f"Root directory set to: {ROOT_DIR}")
 
         # subfolders
-        ASSETS_DIR = os.path.join(ROOT_DIR, "Assets")
+        ASSETS_DIR = os.path.join(ROOT_DIR, "assets")
         LEVELS_DIR = os.path.join(ROOT_DIR, "levels")
 
-        log.debug(f"Assets directory set to: {ASSETS_DIR}")
+        log.debug(f"root assets directory set to: {ASSETS_DIR}")
         log.debug(f"Levels directory set to: {LEVELS_DIR}")
