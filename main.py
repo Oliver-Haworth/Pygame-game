@@ -1,5 +1,8 @@
 # --- main.py ---
-''' this file maintains the modules and runtime '''
+'''
+this file maintains the modules and runtime
+all functions and methods must only use variables and constants from __init__ or peramiters
+'''
 
 
 # --- import library ---
@@ -13,7 +16,7 @@ from log_system import log
 
 # Clear Logs
 with open('game_log.log', 'w'):
-    log.debug('main.py - new session started')
+    log.debug(' new session started')
 
 log.debug('All modules imported')
 
@@ -25,6 +28,7 @@ class Game:
     def __init__(self):
         # Initializations
         pygame.init()
+        self.player = Player(640, 360, Settings.Paths.PLAYER_IMG1 )
 
         # Clock
         self.clock = pygame.time.Clock()
@@ -79,7 +83,7 @@ class Game:
             self.canvas.blit(self.bg_surf, (0, 0))
 
             # 2. Draw the player onto the canvas
-            pygame.draw.rect(self.canvas, Player.box_color, Player.box_rect)
+            self.player.draw_player(self.canvas)
 
             # 3. Scale the canvas to screen size
             scaled_window = pygame.transform.scale(self.canvas, self.screen.get_size())

@@ -3,10 +3,12 @@
     I intend to make this a .txt file later on 
     potentially i use this file as a layer to read from that file'''
 
+
 # --- import library ---
 ''' import all required libraries '''
 import os
 from log_system import log
+
 
 class Settings():
     ''' Settings class to hold game configuration constants '''
@@ -16,6 +18,7 @@ class Settings():
 
     FPS = 60
     
+
     class Paths():
         ''' defines the asset paths used in the game '''
 
@@ -30,3 +33,5 @@ class Settings():
 
         log.debug(f"root assets directory set to: {ASSETS_DIR}")
         log.debug(f"Levels directory set to: {LEVELS_DIR}")
+
+        PLAYER_IMG1 = os.path.join(ASSETS_DIR, "PlayerImg1.png")
